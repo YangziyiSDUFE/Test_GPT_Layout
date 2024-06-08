@@ -1,0 +1,167 @@
+{
+    "items": [
+      {
+        "name": "Cash Register",
+        "position": [2, 18, 0],
+        "scale": [1, 1, 1],
+        "rotation": [0, 0, 0]
+      },
+      {
+        "name": "Coffee Machine",
+        "position": [2.5, 18, 1],
+        "scale": [0.8, 0.8, 0.8],
+        "rotation": [0, 90, 0]
+      },
+      {
+        "name": "Coffee Table 1",
+        "position": [6, 6, 0],
+        "scale": [1, 1, 1],
+        "rotation": [0, 0, 0]
+      },
+      {
+        "name": "Coffee Table 2",
+        "position": [6, 12, 0],
+        "scale": [1, 1, 1],
+        "rotation": [0, 0, 0]
+      },
+      {
+        "name": "Coffee Table 3",
+        "position": [14, 6, 0],
+        "scale": [1, 1, 1],
+        "rotation": [0, 0, 0]
+      },
+      {
+        "name": "Coffee Table 4",
+        "position": [14, 12, 0],
+        "scale": [1, 1, 1],
+        "rotation": [0, 0, 0]
+      },
+      {
+        "name": "Chair 1",
+        "position": [5, 5.5, 0],
+        "scale": [1, 1, 1],
+        "rotation": [0, 0, 0]
+      },
+      {
+        "name": "Chair 2",
+        "position": [5, 6.5, 0],
+        "scale": [1, 1, 1],
+        "rotation": [0, 0, 180]
+      },
+      {
+        "name": "Chair 3",
+        "position": [5, 11.5, 0],
+        "scale": [1, 1, 1],
+        "rotation": [0, 0, 0]
+      },
+      {
+        "name": "Chair 4",
+        "position": [5, 12.5, 0],
+        "scale": [1, 1, 1],
+        "rotation": [0, 0, 180]
+      },
+      {
+        "name": "Chair 5",
+        "position": [13, 5.5, 0],
+        "scale": [1, 1, 1],
+        "rotation": [0, 0, 0]
+      },
+      {
+        "name": "Chair 6",
+        "position": [13, 6.5, 0],
+        "scale": [1, 1, 1],
+        "rotation": [0, 0, 180]
+      },
+      {
+        "name": "Chair 7",
+        "position": [13, 11.5, 0],
+        "scale": [1, 1, 1],
+        "rotation": [0, 0, 0]
+      },
+      {
+        "name": "Chair 8",
+        "position": [13, 12.5, 0],
+        "scale": [1, 1, 1],
+        "rotation": [0, 0, 180]
+      },
+      {
+        "name": "Sofa 1",
+        "position": [10, 18, 0],
+        "scale": [1.5, 1, 1],
+        "rotation": [0, 0, 0]
+      },
+      {
+        "name": "Sofa 2",
+        "position": [14, 18, 0],
+        "scale": [1.5, 1, 1],
+        "rotation": [0, 0, 0]
+      },
+      {
+        "name": "Decorative Painting 1",
+        "position": [1, 1, 2],
+        "scale": [1, 1, 1],
+        "rotation": [0, 90, 0]
+      },
+      {
+        "name": "Decorative Painting 2",
+        "position": [19, 1, 2],
+        "scale": [1, 1, 1],
+        "rotation": [0, -90, 0]
+      },
+      {
+        "name": "Plant 1",
+        "position": [18, 2, 0],
+        "scale": [0.5, 0.5, 0.5],
+        "rotation": [0, 0, 0]
+      },
+      {
+        "name": "Plant 2",
+        "position": [2, 2, 0],
+        "scale": [0.5, 0.5, 0.5],
+        "rotation": [0, 0, 0]
+      },
+      {
+        "name": "Chandelier 1",
+        "position": [10, 10, 3],
+        "scale": [1, 1, 1],
+        "rotation": [0, 0, 0]
+      },
+      {
+        "name": "Chandelier 2",
+        "position": [10, 14, 3],
+        "scale": [1, 1, 1],
+        "rotation": [0, 0, 0]
+      },
+      {
+        "name": "Cashier",
+        "position": [2, 18, 0.5],
+        "scale": [1, 1, 1],
+        "rotation": [0, 90, 0]
+      },
+      {
+        "name": "Customer 1",
+        "position": [6, 6, 0.5],
+        "scale": [1, 1, 1],
+        "rotation": [0, -90, 0]
+      },
+      {
+        "name": "Customer 2",
+        "position": [6, 12, 0.5],
+        "scale": [1, 1, 1],
+        "rotation": [0, 90, 0]
+      },
+      {
+        "name": "Customer 3",
+        "position": [14, 6, 0.5],
+        "scale": [1, 1, 1],
+        "rotation": [0, -90, 0]
+      },
+      {
+        "name": "Customer 4",
+        "position": [14, 12, 0.5],
+        "scale": [1, 1, 1],
+        "rotation": [0, 90, 0]
+      }
+    ]
+  }
+  
