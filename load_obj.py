@@ -27,6 +27,17 @@ def load_asset(asset_path):
     return asset
 
 
+def build_loc(loc,rot,scale):
+    pos_x, pos_y, pos_z = loc
+    rot_x, rot_y, rot_z = rot
+    sca_x, sca_y, sca_z = scale
+    actor_location = unreal.Vector(pos_x * 50, pos_y * 50, pos_z * 50)
+    actor_rotation = unreal.Rotator(rot_x, rot_y, rot_z)
+    actor_scale = unreal.Vector(sca_x, sca_y, sca_z)
+
+    return actor_location,actor_rotation,actor_scale
+
+
 def spawn_actor_from_asset(asset,loc,rot,scale):
     """
     Spawn an actor from the given asset.
@@ -73,12 +84,7 @@ if __name__ == "__main__":
     for f in files:
         f_path = search_or_generate(name = f[0])
         asset = load_asset(f_path)
-        pos_x, pos_y, pos_z = f[1]
-        rot_x, rot_y, rot_z = f[3]
-        sca_x, sca_y, sca_z = f[2]
-        actor_location = unreal.Vector(pos_x * 50, pos_y * 50, pos_z * 50)
-        actor_rotation = unreal.Rotator(rot_x, rot_y, rot_z)
-        actor_scale = unreal.Vector(sca_x, sca_y, sca_z)
+        actor_location,actor_rotation,actor_scale = build_loc(f[1],f[3],f[2])        
         spawned_actor = spawn_actor_from_asset(asset, actor_location, actor_rotation, actor_scale)
 
         if spawned_actor:
