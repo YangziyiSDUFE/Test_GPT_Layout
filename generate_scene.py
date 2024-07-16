@@ -1,12 +1,13 @@
 import unreal
 import json
 
-def getDesign():
+def generate_scene_layout(demand):
+    path = "./format_json.json"
+    
     from openai import OpenAI
     client = OpenAI()
     gpt_model = "gpt-3.5-turbo"
-    demand = """设计一个布景大小为20m*20m的咖啡馆场景，需要有四个桌子(table)，每个桌子配两个凳子(chair)，两个沙发(sofa)和一个吧台(bar)，还需要一些景观画(paint)
-            """
+   
     completion = client.chat.completions.create(model=gpt_model,
                                                 messages=[{"role": "system", "content": '''\
                                                            假设你是一名使用UE5引擎进行关卡开发的游戏内环境设计师，\
@@ -35,20 +36,19 @@ def getDesign():
                                                 )
     res, _, _, _ = completion.choices[0].message
     print(res)
-    with open("./format_json.json", 'w') as write_f:
+    with open(path, 'w') as write_f:
         write_f.write(res[1])
 
+    return json.loads(res[1])
 
-def load_from_js():
-    with open("format_json.json") as f:
-        content = f.read()
-        layout_json = json.loads(content)
-    layout_json = layout_json["items"]
+
+def get_all_meshes_from_scene_design(layout):
+    layout = layout["items"]
 
     file_list = []
-    for i in layout_json:
+    for i in layout:
         # print(i)
-        name,pos,scale,rot =[item[1] for item in i.items() ]
+        name, pos, scale, rot =[item[1] for item in i.items() ]
         # print(f"{name}:{pos},{scale},{rot}")
         file_list.append([name,pos,scale,rot])
     return file_list
@@ -64,7 +64,7 @@ def load_asset(asset_path):
     return asset
 
 
-def build_loc(loc,rot,scale):
+def build_transformation(loc,rot,scale):
     pos_x, pos_y, pos_z = loc
     rot_x, rot_y, rot_z = rot
     sca_x, sca_y, sca_z = scale
@@ -72,7 +72,7 @@ def build_loc(loc,rot,scale):
     actor_rotation = unreal.Rotator(rot_x, rot_y, rot_z)
     actor_scale = unreal.Vector(sca_x, sca_y, sca_z)
 
-    return actor_location,actor_rotation,actor_scale
+    return actor_location, actor_rotation, actor_scale
 
 
 def spawn_actor_from_asset(asset,loc,rot,scale):
@@ -121,13 +121,24 @@ def search_or_generate(name):
     return f_path
     
 
+
 if __name__ == "__main__":
-    getDesign()
-    files = load_from_js()
-    for f in files:
-        f_path = search_or_generate(name = f[0])
-        asset = load_asset(f_path)
-        actor_location,actor_rotation,actor_scale = build_loc(f[1],f[3],f[2])        
+    # 用户输入需求
+    user_demand = """设计一个布景大小为20m*20m的咖啡馆场景，需要有四个桌子(table)，每个桌子配两个凳子(chair)，两个沙发(sofa)和一个吧台(bar)，还需要一些景观画(paint)
+            """
+
+    # GPT生成场景设计
+    layout = generate_scene_layout(user_demand)
+
+    # 获取全部的mesh描述
+    meshes = get_all_meshes_from_scene_design(layout)
+    for mesh in meshes:
+        # 寻找符合描述的mesh，如果不存在，则使用T2M模型进行生成
+        mesh_path = search_or_generate(name = mesh[0])
+
+        # 加载asset至ue
+        asset = load_asset(mesh_path)
+        actor_location, actor_rotation,actor_scale = build_transformation(mesh[1],mesh[3],mesh[2])        
         spawned_actor = spawn_actor_from_asset(asset, actor_location, actor_rotation, actor_scale)
 
         if spawned_actor:
